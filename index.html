@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#b51f2e">
+  <title>2026-2027 浙江广厦主场赛程</title>
+  <style>
+    :root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", sans-serif; background: #f5f1e9; color: #241b18; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; padding: 24px; display: grid; place-items: center; }
+    main { width: min(100%, 560px); background: #fffdf8; border: 1px solid #e4d8ca; border-radius: 24px; padding: 30px 24px; box-shadow: 0 18px 50px rgba(57, 35, 28, .12); }
+    .tag { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #f4e2d3; color: #7e2d21; font-size: 13px; font-weight: 700; }
+    h1 { margin: 14px 0 10px; font-size: clamp(28px, 7vw, 42px); line-height: 1.12; letter-spacing: -.03em; }
+    .lead { margin: 0 0 24px; color: #6a5a51; line-height: 1.7; }
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 22px 0; }
+    .fact { padding: 14px 10px; text-align: center; background: #f7f2ea; border-radius: 14px; }
+    .fact strong { display: block; font-size: 20px; color: #9a2633; }
+    .fact span { font-size: 12px; color: #786b63; }
+    .primary { display: block; width: 100%; padding: 15px 18px; border-radius: 14px; text-align: center; text-decoration: none; color: white; background: #b51f2e; font-weight: 750; font-size: 17px; box-shadow: 0 8px 18px rgba(181,31,46,.22); }
+    .primary:active { transform: translateY(1px); }
+    .urlbox { margin-top: 14px; display: flex; gap: 8px; }
+    input { min-width: 0; flex: 1; padding: 12px; border: 1px solid #dbcfc2; border-radius: 11px; background: white; font-size: 13px; color: #544740; }
+    button { border: 0; border-radius: 11px; padding: 0 14px; background: #2f2926; color: white; font-weight: 700; cursor: pointer; }
+    section { margin-top: 26px; padding-top: 20px; border-top: 1px solid #eadfd4; }
+    h2 { margin: 0 0 10px; font-size: 17px; }
+    ol { margin: 0; padding-left: 1.35em; color: #62554d; line-height: 1.75; }
+    .note { margin: 18px 0 0; padding: 13px 14px; border-radius: 12px; background: #f7f2ea; color: #6b5c54; font-size: 13px; line-height: 1.6; }
+    footer { margin-top: 18px; color: #9a8c83; font-size: 12px; text-align: center; }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="tag">CBA 常规赛 · 只读订阅</span>
+    <h1>浙江广厦<br>主场赛程</h1>
+    <p class="lead">一次订阅，23 场比赛自动出现在你的 iPhone 日历中。</p>
+    <div class="facts" aria-label="赛程概要">
+      <div class="fact"><strong>23</strong><span>场主场</span></div>
+      <div class="fact"><strong>19:35</strong><span>开赛时间</span></div>
+      <div class="fact"><strong>1 小时</strong><span>提前提醒</span></div>
+    </div>
+    <a class="primary" id="subscribe" href="#">一键订阅到 iPhone</a>
+    <div class="urlbox">
+      <input id="feedUrl" aria-label="HTTPS 订阅地址" readonly>
+      <button id="copy" type="button">复制</button>
+    </div>
+    <section>
+      <h2>如果按钮没有直接打开日历</h2>
+      <ol>
+        <li>复制上方 HTTPS 地址。</li>
+        <li>打开“日历”→“日历”→“添加日历”。</li>
+        <li>选择“添加订阅日历”，粘贴地址并完成订阅。</li>
+      </ol>
+    </section>
+    <p class="note">日历采用中国标准时间，单场按 19:35–22:05 设置。订阅为只读；赛程更新由 iPhone 按系统刷新节奏同步，可能不会立即出现。</p>
+    <footer>2026-2027 浙江广厦主场赛程</footer>
+  </main>
+  <script>
+    const feed = new URL("guangsha-home-2026-27.ics", window.location.href).href;
+    const webcal = feed.replace(/^https:/, "webcal:");
+    document.querySelector("#subscribe").href = webcal;
+    document.querySelector("#feedUrl").value = feed;
+    document.querySelector("#copy").addEventListener("click", async (event) => {
+      await navigator.clipboard.writeText(feed);
+      event.currentTarget.textContent = "已复制";
+      setTimeout(() => event.currentTarget.textContent = "复制", 1600);
+    });
+  </script>
+</body>
+</html>
